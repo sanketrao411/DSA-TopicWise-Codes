@@ -1,36 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int kthsmall(int n, int m, int k, vector<vector<int>> &mat)
-{
-    vector<int> ans(m*m);
-
-
-    
-
-    for (int i = 0; i < ans.size(); i++)
-    {
-        cout << ans[i] << " ";
-    }
-    cout << endl;
-    
-    
-
-    return ans[k];
-}
-
 int main(){
     
-    vector<vector<int>> mat = {{1,2,3},{4,5,6}};
+    vector<int> mat = {1,2,3,4,5,6};
 
-    int n = 2;
-    int m = 3;
+    // mat[0] = "sanket";
+    mat[0] = 7.5;
 
-    int k = 0;
-
-    int ans = kthsmall(n, m, k, mat);
-
-    cout << "Smallest is " << ans << endl;
+    for (int i = 0; i < mat.size(); i++)
+    {
+        cout << mat[i] << " ";
+    }
+    
 
     
     return 0;

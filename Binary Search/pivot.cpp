@@ -24,9 +24,9 @@ int getpivot(int arr[], int n)
 
 int main()
 {
-    int arr[5]  = { 3,7, 9,1, 2};
+    int arr[2]  = { 2, 10};
 
-    cout << "Pivot is at Index " << getpivot(arr, 5) << endl;
+    cout << "Pivot is at Index " << getpivot(arr, 2) << endl;
     
     return 0;
 }
