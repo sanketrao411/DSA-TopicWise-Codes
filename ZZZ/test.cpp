@@ -1,19 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(){
-    
-    vector<int> mat = {1,2,3,4,5,6};
+int fX(char *a)
+{
+    char *b = a;
+    while (*b)
+        b++;
+    return b - a;
+}
 
-    // mat[0] = "sanket";
-    mat[0] = 7.5;
+int main()
+{
+    char c[] = "abcd";
 
-    for (int i = 0; i < mat.size(); i++)
-    {
-        cout << mat[i] << " ";
-    }
-    
+    char *d = "abcd";
 
-    
+    int ans = fX("abcd");
+
+    cout << ans << endl;
     return 0;
-} 
+}
