@@ -1,39 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool check(string str)
-{   
-    int count = 0;
-    for(int i = 0; i < str.length(); i++)
-    {
-        if(str[i] == 0 || str[i] == 1)
-        {
-            count++;
-        }
-        else
-        {
-            return false;
-        }
+void  rotateArray(int arr[], int k) {
 
+    int n = 0;
+    k = k % n;
 
-    }
-    
-    return true;
+    reverse(arr , arr+k);
+    reverse(arr + k, arr + n);
+
+    reverse(arr, arr + n);
+
+    // return arr;
 }
+
 
 int main() 
 {
-    string str;
-    cin >> str;
-
-    if(check(str))
-    {
-        cout << "Binary" << endl;
-    }
-    else
-    {
-        cout << "Not" << endl;
-    }
+    
      
     return 0;
 }
