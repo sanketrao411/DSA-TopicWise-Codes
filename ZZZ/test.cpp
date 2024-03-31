@@ -1,23 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void  rotateArray(int arr[], int k) {
+int test(int arr[], int k) {
 
-    int n = 0;
-    k = k % n;
-
-    reverse(arr , arr+k);
-    reverse(arr + k, arr + n);
-
-    reverse(arr, arr + n);
-
-    // return arr;
+    for (int i = 0; i < k; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    
 }
 
 
 int main() 
 {
-    
+    int m[3][3] = {1,2,3,4,5,6,7,8,9};
+
+    test(m[1], 3);
      
     return 0;
 }
