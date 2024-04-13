@@ -10,6 +10,9 @@ int main()
     q.push(20); 
     q.push(02);
 
+    q.emplace(14);
+    cout << "back : " << q.back() << endl;
+
     cout << "Queue size : " << q.size() << endl;
 
     cout << "Front : " << q.front() << endl;
