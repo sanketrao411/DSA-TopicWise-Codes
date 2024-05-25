@@ -1,103 +1,46 @@
-// #include<bits/stdc++.h>
-// using namespace std;
-
-// string solve(string str, int n)
-// {
-
-//     if(n <= 2)
-//     {
-//         return "NO";
-//     }
-       
-//     int oneCount = 0;
-//     int zeroCount = 0;
-
-//     for (int i = 0; i < n; i++)
-//     {
-//         if(str[i] == '1')
-//             oneCount++;
-//         if(str[i] == '0')
-//             zeroCount++;
-//     }
-//     if(oneCount == n)
-//     {
-//         return "YES";
-//     }
-        
-//     if(zeroCount == n)
-//     {
-//         return "YES";
-//     }
-//     if(oneCount % 2 != 0) 
-//     {
-//         return "NO";
-//     }
-//     else
-//     {
-//         int s = 0;
-//         int e = n / 2;
-
-//         while(s < n/2)
-//         {
-//             if(str[s] == str[e])
-//             {
-//                 s++;
-//                 e++;
-//             }
-//             else
-//             {
-//                 return "NO";
-//             }
-//         }
-//     }
-    
-
-//     return "YES";
-    
-// }
-
-// int main() 
-// {
-//     int t;
-//     cin >> t;
-//     for (int i = 0; i < t; i++)
-//     {
-//         int n;
-//         cin >> n;
-//         string str;
-//         cin >> str;
-//         string ans = solve(str, str.length());
-//         cout << ans << endl;
-//     }
-    
-//     return 0;
-// }
-
 #include <iostream>
-#include <string>
+#include <queue>
+#include <unordered_set>
 
 using namespace std;
 
-int main() {
-    int t;
-    cin >> t;
-    
-    while (t--) {
-        int n;
-        cin >> n;
-        
-        string s;
-        cin >> s;
-        
-        // Check if there's more than one '1' in the string
-        size_t pos = s.find("11");
-        
-        if (pos == string::npos || pos == n - 1)
-            cout << "YES" << endl;
-        else
-            cout << "NO" << endl;
+int minOperations(int A, int B, int K) {
+    if (A == B) return 0;
+    queue<pair<long long, int>> q; // pair of (current value, number of operations)
+    unordered_set<long long> visited; // to keep track of visited values
+
+    q.push({A, 0});
+    visited.insert(A);
+
+    while (!q.empty()) {
+        auto [current, ops] = q.front();
+        q.pop();
+
+        // Operation 1: current + 1
+        if (current + 1 == B) return ops + 1;
+        if (current + 1 < B && visited.find(current + 1) == visited.end()) {
+            q.push({current + 1, ops + 1});
+            visited.insert(current + 1);
+        }
+
+        // Operation 2: current * K
+        if (current * K == B) return ops + 1;
+        if (current * K < B && visited.find(current * K) == visited.end()) {
+            q.push({current * K, ops + 1});
+            visited.insert(current * K);
+        }
     }
-    
-    return 0;
+
+    return -1; // just a safety net, in a well-formed problem, we should never reach here
 }
 
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        int A, B, K;
+        cin >> A >> B >> K;
+        cout << minOperations(A, B, K) << endl;
+    }
+    return 0;
+}
